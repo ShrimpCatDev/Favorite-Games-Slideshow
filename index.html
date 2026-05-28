@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iiSU Slideshow Widget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Pure, full-bleed slideshow container -->
+  <div class="slideshow-widget">
+    <div class="slide active" style="background-image: url('kh2.jpg');"></div>
+    <div class="slide" style="background-image: url('uncharted4.jpg');"></div>
+    <div class="slide" style="background-image: url('jak.jpg');"></div>
+    <div class="slide" style="background-image: url('dissidia.jpg');"></div>
+  </div>
+
+  <!-- JavaScript handles only the image loops now -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll('.slide');
+      let currentIndex = 0;
+
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        
+        setTimeout((idx) => {
+          slides[idx].style.transform = "scale(1.05)";
+        }, 1500, currentIndex);
+
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 7000); 
+    });
+  </script>
+</body>
+</html>
